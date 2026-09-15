@@ -11,6 +11,10 @@ An end-to-end Retrieval-Augmented Generation (RAG) demo: point it at a local doc
 
 > A good starting point for learning the full RAG pipeline or building a personal knowledge-base Q&A system.
 
+## Screenshot
+
+![UI screenshot](docs/screenshot.png)
+
 ## Features
 
 - **Multiple formats**: `.docx` / `.pdf`, selected by file extension or `DOC_TYPE` in `.env`.
