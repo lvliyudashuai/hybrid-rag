@@ -1,5 +1,12 @@
 # RAG Document Q&A Demo
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/UI-Streamlit-FF4B4B.svg)](https://streamlit.io/)
+[![Chroma](https://img.shields.io/badge/Vector%20Store-Chroma-4B8BBE.svg)](https://www.trychroma.com/)
+
+> 中文版: [README.md](README.md)
+
 An end-to-end Retrieval-Augmented Generation (RAG) demo: point it at a local document (`.docx` or `.pdf`), and it runs **document parsing -> section metadata injection -> chunking -> embedding -> similarity retrieval -> LLM answer generation**, with both an interactive Streamlit UI and a CLI entry point.
 
 > A good starting point for learning the full RAG pipeline or building a personal knowledge-base Q&A system.

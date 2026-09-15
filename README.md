@@ -1,5 +1,10 @@
 # RAG 文档问答 Demo
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/UI-Streamlit-FF4B4B.svg)](https://streamlit.io/)
+[![Chroma](https://img.shields.io/badge/Vector%20Store-Chroma-4B8BBE.svg)](https://www.trychroma.com/)
+
 > English version: [README.en.md](README.en.md)
 
 一个端到端的检索增强生成（RAG）演示项目：指定一篇本地文档（docx 或 pdf），系统自动完成 **文档解析 → 章节元数据注入 → 分块 → 向量化 → 相似度检索 → LLM 生成回答**，并提供可交互的 Streamlit 前端与命令行入口。
