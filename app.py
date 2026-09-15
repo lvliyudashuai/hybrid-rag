@@ -2,6 +2,8 @@
 
 界面只负责「收集参数 + 展示结果」，真正的逻辑都在 retrieval / query / ingest 里，
 所以同一套能力命令行和 REST API 也能用。
+
+想双击就用：跑 start.bat（或桌面快捷方式），它等于「起服务 + 开窗口」，见 launch.py。
 """
 from __future__ import annotations
 
@@ -170,11 +172,25 @@ def page_chat() -> None:
     st.subheader("💬 文档问答")
     st.caption("回答只依据你的文档，并标注来源编号；资料里没有的内容会明确说明「未找到」。")
 
-    for message in st.session_state.messages:
+    if st.session_state.messages:
+        _, clear_col = st.columns([8, 1])
+        if clear_col.button("🧹 清空对话", key="clear_chat",
+                            help="只清掉聊天记录，API Key 与检索参数保持不变"):
+            st.session_state.messages = []
+            st.session_state.last_trace = None
+            st.rerun()
+
+    for index, message in enumerate(list(st.session_state.messages)):
         with st.chat_message(message["role"]):
-            st.markdown(message["content"])
-            if message.get("hits"):
-                render_hits(message["hits"])
+            body, tools = st.columns([20, 1])
+            with tools:
+                if st.button("🗑", key=f"delete_message_{index}", help="删除这一条"):
+                    st.session_state.messages.pop(index)
+                    st.rerun()
+            with body:
+                st.markdown(message["content"])
+                if message.get("hits"):
+                    render_hits(message["hits"])
 
     question = st.chat_input("基于文档提问，例如：这份文档主要讲了什么？")
     if not question:
