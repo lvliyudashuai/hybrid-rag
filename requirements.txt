@@ -1,14 +1,29 @@
-langchain-community
-langchain-text-splitters
-langchain-core
-langchain-huggingface
-langchain-chroma
-chromadb
-sentence-transformers
-transformers
-python-docx
-openai
-anthropic
-streamlit
-python-dotenv
-pypdf
+# ---------- 核心：向量化与向量库 ----------
+langchain-core>=0.3
+langchain-text-splitters>=0.3
+langchain-huggingface>=0.1
+langchain-chroma>=0.2
+chromadb>=0.5
+sentence-transformers>=3.0
+transformers>=4.40
+# GPU 版 torch 请按 https://pytorch.org 的指引单独安装；CPU 版随上面自动装
+
+# ---------- 中文分词（BM25 关键词检索用） ----------
+jieba>=0.42
+
+# ---------- 多格式文档解析 ----------
+python-docx>=1.1
+pypdf>=4.0
+openpyxl>=3.1
+
+# ---------- 大模型客户端（按需装，不用的可以不装） ----------
+openai>=1.30
+anthropic>=0.30
+
+# ---------- 界面与服务 ----------
+streamlit>=1.30
+fastapi>=0.110
+uvicorn>=0.29
+
+# ---------- 配置 ----------
+python-dotenv>=1.0

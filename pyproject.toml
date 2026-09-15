@@ -1,0 +1,21 @@
+# 只有工具配置，没有打包信息：这个项目是"拿来运行"的，不是装成库的。
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM"]
+ignore = [
+    "E501",   # 行长由 formatter 负责，中文注释很难控制在 100 列内
+    "B008",   # FastAPI 的 Depends() 默认参数是官方写法
+    "SIM108", # 三元表达式不一定更好读
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E402"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning"]

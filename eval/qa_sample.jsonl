@@ -1,0 +1,23 @@
+# RAG 检索质量评估集（示例）
+# 一行一个 JSON，字段：
+#   question           必填，问题
+#   expected_sections  命中这些章节（子串匹配）算检索正确
+#   expected_keywords  标准答案里必须出现的关键词，用于衡量召回内容是否够用
+#   answerable         false 表示文档里没有答案，系统应当拒答
+#
+# 这个示例集是针对仓库自带示例文档（rag.docx）写的。
+# 换自己的文档后，请照同样格式写几条第 1 项，评估才有意义。
+{"question": "猪八戒的武器叫什么？有多重？", "expected_sections": ["第八九回"], "expected_keywords": ["八百斤"], "answerable": true}
+{"question": "孙悟空的金箍棒有多重？", "expected_sections": ["第三回"], "expected_keywords": ["一万三千五百斤"], "answerable": true}
+{"question": "孙悟空被压在什么地方？", "expected_sections": ["第七回"], "expected_keywords": ["五行山"], "answerable": true}
+{"question": "唐僧是在哪里收猪八戒为徒的？", "expected_sections": ["第十八回", "第十九回"], "expected_keywords": ["高老庄"], "answerable": true}
+{"question": "沙僧原本盘踞在哪条河边？", "expected_sections": ["第二二回"], "expected_keywords": ["流沙河"], "answerable": true}
+{"question": "火焰山这一难，孙悟空三次去借的是什么？", "expected_sections": ["第六一回", "第五九回"], "expected_keywords": ["芭蕉扇"], "answerable": true}
+{"question": "红孩儿最后被谁收服？", "expected_sections": ["第四二回"], "expected_keywords": ["观音"], "answerable": true}
+{"question": "车迟国斗法这件事发生在哪一回？", "expected_sections": ["第四五回", "第四六回"], "expected_keywords": ["车迟国"], "answerable": true}
+{"question": "取经成功后孙悟空被封为什么？", "expected_sections": ["第九九回"], "expected_keywords": ["斗战胜佛"], "answerable": true}
+{"question": "猪八戒取经成功后得到了什么封号？", "expected_sections": ["第九九回"], "expected_keywords": ["净坛使者"], "answerable": true}
+{"question": "孙悟空的师父叫什么名字？", "expected_sections": ["第一回", "第二回"], "expected_keywords": ["菩提祖师"], "answerable": true}
+{"question": "唐僧师徒一共经历了多少难？", "expected_sections": ["第九九回"], "expected_keywords": ["九九"], "answerable": true}
+{"question": "这份文档里有没有介绍向量数据库的索引算法？", "expected_sections": [], "expected_keywords": [], "answerable": false}
+{"question": "文档里提到的 RAG 重排模型是哪一个？", "expected_sections": [], "expected_keywords": [], "answerable": false}

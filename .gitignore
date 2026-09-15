@@ -8,7 +8,24 @@ venv/
 # 运行期生成物（用 python ingest.py 重新生成）
 chroma_db/
 chroma_db_qwen/
+chroma_db_*/
+_tmp*/
 *.sqlite3
+
+# 界面里上传的文件副本
+uploads/
+
+# 测试与检查工具缓存
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# 截图临时文件（docs/_*.png 是裁图中间产物）
+docs/_*.png
+
+# 评估输出（每次跑 evaluate.py 生成）
+eval/*.json
 
 # 本地密钥/配置：.env 是真实本地配置（含 Key，绝不推送）
 # .env.example 是模板（无 Key，会上传）
