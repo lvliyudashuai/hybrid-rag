@@ -1,0 +1,10 @@
+# Streamlit 本地配置（只管运行方式，不改业务逻辑）
+#
+# runOnSave：改完 .py 保存后页面自动重载，省掉手动点 Rerun。
+# gatherUsageStats：关掉匿名的使用统计上报。
+
+[server]
+runOnSave = true
+
+[browser]
+gatherUsageStats = false

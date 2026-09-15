@@ -10,6 +10,10 @@
 
 ![界面预览](docs/screenshot.png)
 
+不填 API Key 也能用：检索照常工作，回答退化成离线拼装，全程不碰任何外部服务。
+
+![离线模式（无 API Key）](docs/screenshot-offline.png)
+
 ---
 
 ## 它比"能跑"多了什么
@@ -49,6 +53,24 @@ streamlit run app.py            # 打开界面
 GPU 用户想装 CUDA 版 torch，请按 [pytorch.org](https://pytorch.org) 的指引先装 torch 再装其余依赖。
 不填任何 API Key 时，系统走**离线模拟**：检索照常工作，回答由最相关的片段拼成，不调用任何外部服务。
 
+### Windows：双击就能用
+
+装完依赖后直接双击 `start.bat`：它会先看服务是不是已经在跑，没有就起一个，
+等健康检查通过再打开「应用窗口」——所以不会开出一个白屏。**关掉那个控制台窗口就等于停止服务。**
+
+想给它在桌面放个图标（图标借用 Python 的，按需改路径）：
+
+```powershell
+$shell = New-Object -ComObject WScript.Shell
+$desktop = [Environment]::GetFolderPath("Desktop")
+$lnk = $shell.CreateShortcut("$desktop\RAG 文档问答助手.lnk")
+$lnk.TargetPath = "$PWD\start.bat"
+$lnk.WorkingDirectory = "$PWD"
+$lnk.Save()
+```
+
+项目自带的 `.streamlit/config.toml` 打开了 `server.runOnSave`：改完 `.py` 保存，页面自动重载，不用手动点 Rerun。
+
 ---
 
 ## 目录结构
@@ -67,6 +89,8 @@ query.py          提示词构造、引用、回答生成
 ingest.py         入库编排（批量、增量、失败隔离）
 evaluate.py       离线评估（Hit@k / MRR / 关键词覆盖）
 app.py            Streamlit 界面        rag.py 命令行        api.py REST 接口
+launch.py         一键启动器（起服务 → 等就绪 → 开窗口）    start.bat 双击入口
+.streamlit/       Streamlit 本地配置（保存自动重载、关闭统计上报）
 tests/            74 个测试（用假 embedding，不联网）
 eval/             评估集与评估结果
 ```
@@ -166,8 +190,8 @@ python rag.py                             # 交互式（支持多轮上下文）
 python rag.py --stats / --prune           # 库状态 / 清理残留目录
 ```
 
-**Streamlit 界面**：`streamlit run app.py`
-对话（流式输出 + 引用）/ 知识库（上传、增量入库、清空）/ 检索调试（三种模式并排对比）/ 设置 / 关于。
+**Streamlit 界面**：`streamlit run app.py`，或直接双击 `start.bat`（等价于 `python launch.py`）
+对话（流式输出 + 引用，可删单条或清空整个对话）/ 知识库（上传、增量入库、清空）/ 检索调试（三种模式并排对比）/ 设置 / 关于。
 
 **REST API**：`python api.py`，文档在 `http://127.0.0.1:8000/docs`
 

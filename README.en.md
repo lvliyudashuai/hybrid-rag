@@ -12,6 +12,11 @@ separate module with test coverage.
 
 ![UI preview](docs/screenshot.png)
 
+Works without any API key: retrieval still runs, answers fall back to offline assembly,
+and nothing external is called.
+
+![Offline mock mode (no API key)](docs/screenshot-offline.png)
+
 ---
 
 ## What it does beyond "it runs"
@@ -53,6 +58,26 @@ if you want GPU acceleration. Without any API key the system runs in **offline m
 retrieval still works, the answer is composed from the most relevant passages, and no
 external service is called.
 
+### Windows: just double-click
+
+After installing the dependencies, double-click `start.bat`. It checks whether the service is
+already running, starts one if not, waits for the health check, then opens an app window — so
+you never stare at a blank page. **Closing that console window stops the service.**
+
+Want a desktop icon (the icon is borrowed from Python; adjust paths as needed):
+
+```powershell
+$shell = New-Object -ComObject WScript.Shell
+$desktop = [Environment]::GetFolderPath("Desktop")
+$lnk = $shell.CreateShortcut("$desktop\RAG QA Assistant.lnk")
+$lnk.TargetPath = "$PWD\start.bat"
+$lnk.WorkingDirectory = "$PWD"
+$lnk.Save()
+```
+
+The bundled `.streamlit/config.toml` turns on `server.runOnSave`: save a `.py` file and the page
+reloads on its own — no manual Rerun.
+
 ---
 
 ## Project layout
@@ -71,6 +96,8 @@ query.py          prompt construction, citations, answer generation
 ingest.py         ingest orchestration (batch, incremental, per-file failure isolation)
 evaluate.py       offline evaluation (Hit@k / MRR / keyword coverage)
 app.py            Streamlit UI     rag.py CLI     api.py REST API
+launch.py         one-click launcher + start.bat (double-click entry)
+.streamlit/       local Streamlit config (auto-reload on save, usage stats off)
 tests/            74 tests (fake embeddings, no network)
 eval/             evaluation dataset and reports
 ```
@@ -114,6 +141,7 @@ python rag.py --ingest ./docs --append    # incremental ingest
 python rag.py "question" --trace          # single question with per-stage timings
 python rag.py                             # interactive multi-turn
 python rag.py --stats / --prune           # index stats / cleanup
+python launch.py                          # start the server and open an app window
 python api.py                             # REST API (docs at /docs)
 ```
 
