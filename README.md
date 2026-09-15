@@ -25,8 +25,7 @@ rag_demo/
 ├── app.py                # Streamlit 前端
 ├── rag.py                # CLI 入口
 ├── requirements.txt
-├── .env.example          # 配置模板（会被推送）
-├── .env                  # 本地真实配置（不推送，含密钥）
+├── .env.example          # 配置模板
 └── rag.docx              # 示例文档
 ```
 
