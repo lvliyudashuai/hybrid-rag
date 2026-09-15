@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 运行期生成物（用 python ingest.py 重新生成）
+chroma_db/
+chroma_db_qwen/
+*.sqlite3
+
+# 本地密钥/配置：.env 是真实本地配置（含 Key，绝不推送）
+# .env.example 是模板（无 Key，会上传）
+.env
+.env.local
+
+# 调试残留
+_st2_err.txt
+.st2_err.txt
+*.log
+
+# 编辑器本地配置（不共享）
+.vscode/
