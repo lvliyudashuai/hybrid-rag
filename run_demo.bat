@@ -1,7 +1,8 @@
 @echo off
 chcp 65001 >nul
 cd /d "%~dp0"
-set "PY=C:\Users\20992\AppData\Local\Programs\Python\Python312\python.exe"
+set "PY=python"
+if exist "%~dp0.venv\Scripts\python.exe" set "PY=%~dp0.venv\Scripts\python.exe"
 
 echo ============================================
 echo  RAG Demo Launcher

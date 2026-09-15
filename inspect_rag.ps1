@@ -1,4 +1,4 @@
-$root = 'C:\Users\20992\Desktop\rag_demo'
+$root = Split-Path -Parent $MyInvocation.MyCommand.Path
 Write-Output '=== FILES (top-level) ==='
 Get-ChildItem $root | Select-Object Name,Length,LastWriteTime | Format-Table -AutoSize
 Write-Output '=== chroma_db_qwen ==='

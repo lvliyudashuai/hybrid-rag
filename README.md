@@ -1,5 +1,7 @@
 # RAG 文档问答 Demo
 
+> English version: [README.en.md](README.en.md)
+
 一个端到端的检索增强生成（RAG）演示项目：指定一篇本地文档（docx 或 pdf），系统自动完成 **文档解析 → 章节元数据注入 → 分块 → 向量化 → 相似度检索 → LLM 生成回答**，并提供可交互的 Streamlit 前端与命令行入口。
 
 > 适合作为学习 RAG 完整流程、搭建个人知识库问答系统的入门示例。
@@ -90,3 +92,7 @@ python rag.py "这篇文章主要讲了什么？"
 - 使用 Qwen3-Embedding 时增加 query/passage 不对称检索指令。
 - 接入混合检索（BM25 + 向量）与重排（Reranker）。
 - 支持网页上传文档，做成通用文档问答应用。
+
+## 许可证
+
+MIT，详见 [LICENSE](LICENSE)。
