@@ -25,8 +25,7 @@ rag_demo/
 |-- app.py                # Streamlit UI
 |-- rag.py                # CLI entry
 |-- requirements.txt
-|-- .env.example          # config template (committed)
-|-- .env                  # local config with secrets (never committed)
+|-- .env.example          # config template
 `-- rag.docx              # sample document
 ```
 
