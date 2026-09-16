@@ -6,7 +6,7 @@ English | [简体中文](README.md)
 > in plain language, and get answers **with citations**. Runs fully offline — no API key
 > required (it falls back to an offline mock mode).
 
-This is a **readable, hackable, measurable** RAG implementation rather than a toy demo:
+This is a readable, hackable, measurable RAG implementation:
 every stage (loading / chunking / retrieval / generation / evaluation / serving) is a
 separate module with test coverage.
 
@@ -19,7 +19,7 @@ and nothing external is called.
 
 ---
 
-## What it does beyond "it runs"
+## Features
 
 | Capability | Notes |
 | --- | --- |
